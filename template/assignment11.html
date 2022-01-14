@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Assignment 11
+{% endblock %}
+
+{% block tohen %}
+
+  {{ super() }}
+    <title>Assignment 11 - Outer Source</title>
+    <link rel="CV1.CSS" href="/static/css/CV1.css">
+
+
+
+
+</head>
+<body>
+    {% include('menu.html') %}
+
+
+
+    <div class="content">
+
+        <h1>  Frontend side of request </h1>
+        <input type="NUM" name="NUM" id="NUM "/>
+        <button onclick="myFunction()"> click over here</button>  #T
+
+        <script src="../static/js/assignment11.js"></script>
+
+
+        <h2> Backend side of request </h2>
+        <form action="/assignment11/outer_source" method="get">
+            <input type="NUM" name="NUM" id="b_NUM">
+            <input type="submit" value="click over here">
+        </form>
+
+
+        <br><br>
+        <main>
+            {% if  user %}
+                <img src="{{ user.avatar }}" alt="PROFILE PIC"/>
+            <div>
+
+                    <span>{{ user.first_name + " " + user.last_name }}</span>
+
+                    <a href="mailto:{{ user.email }}">send an email here</a>
+
+                </div>
+            {% endif %}
+
+
+
+
+        </main>
+    </div>
+
+
+
+</body>
+</html>
+
+{% endblock %}
