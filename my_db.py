@@ -26,3 +26,15 @@ def interact_db(query, query_type: str):
     connection.close()
     cursor.close()
     return return_value
+# JASON
+def JSN_FUNC(query):
+    connection = mysql.connector.connect(host='localhost',
+                                         user='root',
+                                         passwd='root',
+                                         database='assignment_10_db')
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute(query)
+    inp = cursor.fetchall()
+    connection.close()
+    cursor.close()
+    return inp
