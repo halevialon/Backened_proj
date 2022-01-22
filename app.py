@@ -71,7 +71,7 @@ def assignment11_page():
 
 
 @app.route("/assignment11/outer_source", methods=['GET'])
-def assignment11_os_page():
+def assignment11_outer_source():
     if 'Num' in request.args:
         Num = request.args['Num']
         inp = request.get(url="https://reqres.in/api/users/{Num}")
@@ -79,6 +79,18 @@ def assignment11_os_page():
         return render_template('assignment11-outer_source.html', user=inp['data'])
     return render_template('assignment11-outer_source.html')
 
+
+@app.route('/assignment12/restapi_users', defaults= {'userID': 1} )
+
+#12 
+@app.route("/assignment12/restapi_users/<int:userID>")
+def assignment_12_func(user_id):
+
+    myQuery = 'select * from users where id=%s' % user_id #
+    output_query = JSN_FUNC(query=myQuery)
+    if len(output_query)==0:
+        output_query = [{'condition': 'not found', 'message': 'no user was identified'}]
+    return json.dumps(output_query)
 
 
 if __name__ == '__main__':
